@@ -148,7 +148,6 @@ input{
     
 }
 .memory-cards{
-    opacity: 0;
     margin-top: 20px;
     margin-bottom: 20px;
     width: 700px;
@@ -188,6 +187,37 @@ input{
     padding: 30px;
     transform: rotateY(180deg);
     background-color: #fff;
+}
+.window{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.window-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color:rgba(247, 231, 142, 0.8);
+    border-radius: 5px;
+    transform: translate(-50%, -50% );
+}
+.start{
+    width: 150px;
+    height: 50px;
+    background-color:crimson;
+    border: none;   
+    color: white;
+    font-size: 24px;
+    border-radius: 15px;
 }
 
 .footer-container{
