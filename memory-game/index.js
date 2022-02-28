@@ -9,7 +9,10 @@ let firstCard;
 let secondCard;
 let lockCard = false;
 let step = 0;
-let flippedCard = 10;
+let flippedCard = 0;
+
+let audio = new Audio();
+
 
 cards.forEach(card => card.addEventListener('click', flipCard));
 
@@ -23,22 +26,23 @@ function flipCard(){
 
         hasFlippedCard = true;
         firstCard = this;
+        playAudioFlip();
     } else {
     
         secondCard = this;
+        playAudioFlip();
         checkMatches();
     }
-    console.log(firstCard, secondCard);
-
-    
-    
+    console.log(firstCard, secondCard); 
 }
+
 
 function checkMatches(){
     if(firstCard.dataset.image === secondCard.dataset.image){
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
         flippedCard++;
+        console.log(flippedCard);
         resetBoard()
     }else{
         lockCard = true;
@@ -70,9 +74,10 @@ function shuffleCards(){
 
 window.addEventListener('load', shuffleCards);
 
-/*------------------------------------------------*/
+/*----------------MODALWINDOW--------------------------------*/
 
 if(flippedCard === 10){
+    playAudioWin();
     text.innerHTML = `You open all cards in ${step} steps`
     modalWindow.classList.add('open');
 }
@@ -91,3 +96,22 @@ function closeModalWindow(){
 }
 
 closeBtn.addEventListener('click', closeModalWindow);
+
+/*-----------------AUDIO----------------*/
+
+
+
+function playAudioFlip(){
+    audio.src = 'assets/audio/sound.mp3';
+    playAudio();
+}
+
+
+function playAudio(){
+    audio.play();
+}
+
+function playAudioWin(){
+    audio.src = 'assets/audio/win.mp3';
+    playAudio();
+}
