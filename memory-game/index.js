@@ -43,6 +43,7 @@ function checkMatches(){
         secondCard.removeEventListener('click', flipCard);
         flippedCard++;
         console.log(flippedCard);
+        checkIsAllCardsFlipped();
         resetBoard()
     }else{
         lockCard = true;
@@ -76,10 +77,12 @@ window.addEventListener('load', shuffleCards);
 
 /*----------------MODALWINDOW--------------------------------*/
 
-if(flippedCard === 10){
-    playAudioWin();
-    text.innerHTML = `You open all cards in ${step} steps`
-    modalWindow.classList.add('open');
+function checkIsAllCardsFlipped(){
+    if(flippedCard === 10){
+        playAudioWin();
+        text.innerHTML = `You open all cards in ${step} steps`
+        modalWindow.classList.add('open');
+    }
 }
 
 function removeFlip(){
