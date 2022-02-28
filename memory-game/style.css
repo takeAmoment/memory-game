@@ -189,12 +189,16 @@ input{
     background-color: #fff;
 }
 .window{
+    display: none;
     height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
+}
+.window.open{
+    display: block;
 }
 .window-body{
     display: flex;
@@ -211,6 +215,7 @@ input{
     transform: translate(-50%, -50% );
 }
 .start{
+    margin-top: 30px;
     width: 150px;
     height: 50px;
     background-color:crimson;
