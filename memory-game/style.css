@@ -196,6 +196,10 @@ input{
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.8);
+    background-image: url(assets/image/ballon640.jpg);
+    background-size: 640px 600px;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 .window.open{
     display: block;
@@ -210,7 +214,8 @@ input{
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color:rgba(247, 231, 142, 0.8);
+    background-color:rgba(247, 231, 142);
+    color: black;
     border-radius: 5px;
     transform: translate(-50%, -50% );
 }
@@ -223,6 +228,11 @@ input{
     color: white;
     font-size: 24px;
     border-radius: 15px;
+    transition: 0.4s;
+}
+.start:hover{
+    box-shadow: 0px 2px 5px 2px whitesmoke;
+    background-color: rgba(220, 20, 60, 0.85);
 }
 
 .footer-container{
