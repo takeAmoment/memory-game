@@ -4,6 +4,10 @@ let modalWindow = document.querySelector('.window');
 let text = document.querySelector('.text');
 let closeBtn = document.querySelector('.start');
 
+let settingBtn = document.querySelector('.settings');
+let settingBody = document.querySelector('.settings-body');
+let limit = document.getElementById('limit');
+
 let hasFlippedCard = false;
 let firstCard;
 let secondCard;
@@ -12,6 +16,8 @@ let step = 0;
 let flippedCard = 0;
 
 let audio = new Audio();
+
+
 
 
 cards.forEach(card => card.addEventListener('click', flipCard));
@@ -33,6 +39,8 @@ function flipCard(){
         playAudioFlip();
         checkMatches();
     }
+    step++;
+    console.log(step);
     console.log(firstCard, secondCard); 
 }
 
@@ -55,8 +63,7 @@ function checkMatches(){
         }, 1500);
         
     }
-    step++;
-    console.log(step);
+    
 }
 
 function resetBoard(){
@@ -102,8 +109,6 @@ closeBtn.addEventListener('click', closeModalWindow);
 
 /*-----------------AUDIO----------------*/
 
-
-
 function playAudioFlip(){
     audio.src = 'assets/audio/sound.mp3';
     playAudio();
@@ -118,3 +123,29 @@ function playAudioWin(){
     audio.src = 'assets/audio/win.mp3';
     playAudio();
 }
+
+/*----------SETTINGS----------*/
+
+function openSettingWindow(){
+    settingBody.classList.toggle('open');
+}
+settingBtn.addEventListener('click', function(event){
+    event.preventDefault();
+    openSettingWindow();
+});
+
+
+
+/*----------------Settings--------------------*/
+
+limit.addEventListener('change', function(){
+    console.log(this.value);
+    
+})
+
+function disabledLimit(){
+    for(let option of limit){
+        option.disabled = true;
+    }
+}
+disabledLimit();
