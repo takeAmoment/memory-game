@@ -143,9 +143,14 @@ limit.addEventListener('change', function(){
     
 })
 
-function disabledLimit(){
+function blockLimit(){
     for(let option of limit){
         option.disabled = true;
     }
 }
-disabledLimit();
+
+function unblockLimit(){
+    for(let option of limit){
+        option.disabled = false;
+    }
+}
