@@ -40,9 +40,14 @@ function flipCard(){
         playAudioFlip();
         checkMatches();
     }
-    step++;
+    if(limit.value > 0){
+        step--;
+    } else {
+        step++;
+    }
+    
     console.log(step);
-    console.log(firstCard, secondCard); 
+     
 }
 
 
@@ -141,8 +146,7 @@ settingBtn.addEventListener('click', function(event){
 /*----------------Settings--------------------*/
 
 limit.addEventListener('change', function(){
-    step = limit.value;
-    console.log(step);    
+    step = limit.value;   
 })
 
 function blockLimit(){
