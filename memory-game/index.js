@@ -27,6 +27,7 @@ function flipCard(){
     if(this === firstCard) return;
 
     this.classList.add('flip');
+    blockLimit();
 
     if(!hasFlippedCard){
 
@@ -99,6 +100,7 @@ function removeFlip(){
     step = 0;
     hasFlippedCard = false;
     lockCard = false;
+    unblockLimit();
 }
 function closeModalWindow(){
     modalWindow.classList.remove('open');
@@ -139,8 +141,8 @@ settingBtn.addEventListener('click', function(event){
 /*----------------Settings--------------------*/
 
 limit.addEventListener('change', function(){
-    console.log(this.value);
-    
+    step = limit.value;
+    console.log(step);    
 })
 
 function blockLimit(){
