@@ -56,7 +56,6 @@ function checkMatches(){
         firstCard.removeEventListener('click', flipCard);
         secondCard.removeEventListener('click', flipCard);
         flippedCard++;
-        console.log(flippedCard);
         checkIsAllCardsFlipped();
         resetBoard()
     }else{
@@ -67,7 +66,7 @@ function checkMatches(){
             resetBoard()
             
         }, 1500);
-        
+        checkIsAllCardsFlipped();
     }
     
 }
@@ -91,21 +90,30 @@ window.addEventListener('load', shuffleCards);
 /*----------------MODALWINDOW--------------------------------*/
 
 function checkIsAllCardsFlipped(){
-    if(flippedCard === 10){
+    if(limit.value === 0 && flippedCard === 10){
         playAudioWin();
         text.innerHTML = `You open all cards in ${step} steps`
+        modalWindow.classList.add('open');
+    } else if (limit.value > 0 && flippedCard === 10 && step > 0){
+        playAudioWin();
+        text.innerHTML = `You open all cards in ${step} steps`
+        modalWindow.classList.add('open');
+    } else if(limit.value > 0 && step <= 0){
+        text.innerHTML = `You lose. Try again`
         modalWindow.classList.add('open');
     }
 }
 
 function removeFlip(){
-    cards.forEach(card => card.classList.remove('flip'));
-    shuffleCards();
+    // cards.forEach(card => card.classList.remove('flip'));
+    // shuffleCards();
     flippedCard = 0;
     step = 0;
     hasFlippedCard = false;
     lockCard = false;
     unblockLimit();
+    cards.forEach(card => card.classList.remove('flip'));
+    shuffleCards();
 }
 function closeModalWindow(){
     modalWindow.classList.remove('open');
