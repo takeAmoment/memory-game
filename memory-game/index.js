@@ -8,6 +8,10 @@ let settingBtn = document.querySelector('.settings');
 let settingBody = document.querySelector('.settings-body');
 let limit = document.getElementById('limit');
 
+let volumeBtn = document.querySelector('.volume');
+let range = document.querySelector('.range');
+
+
 let hasFlippedCard = false;
 let firstCard;
 let secondCard;
@@ -16,6 +20,7 @@ let step = 0;
 let flippedCard = 0;
 
 let audio = new Audio();
+audio.volume = 1;
 
 
 
@@ -26,7 +31,7 @@ function flipCard(){
     if(lockCard) return;
     if(this === firstCard) return;
 
-    this.classList.add('flip');
+        this.classList.add('flip');
     blockLimit();
 
     if(!hasFlippedCard){
@@ -168,3 +173,28 @@ function unblockLimit(){
         option.disabled = false;
     }
 }
+/*-------------VOLUME---------------------*/
+let unVolume = false;
+
+function changeVolume(){
+    volumeBtn.classList.toggle('mute');
+    if(!unVolume){
+        audio.volume = 0;
+        range.value = 0;
+        unVolume = true;
+    } else if (unVolume){
+        range.value = 5;
+        audio.volume = range.value/10;
+        unVolume = false;
+    }
+    
+}
+
+volumeBtn.addEventListener('click', function(event){
+    event.preventDefault();
+    changeVolume();
+    
+})
+range.addEventListener('change', function(){
+    audio.volume = range.value/10;
+})

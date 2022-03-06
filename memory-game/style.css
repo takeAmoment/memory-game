@@ -136,7 +136,11 @@ select{
     margin-right: 10px;
 }
 .volume:hover{
-    filter: invert(50%) sepia(86%) saturate(0%) hue-rotate(200deg) brightness(96%) contrast(100%);
+   
+    filter: invert(10%) sepia(86%) saturate(0%) hue-rotate(200deg) brightness(96%) contrast(100%);
+}
+.volume.mute{
+    filter: invert(5%) sepia(100%) saturate(6868%) hue-rotate(4deg) brightness(96%) contrast(50%);
 }
 input{
     
